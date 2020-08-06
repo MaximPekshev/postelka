@@ -1,10 +1,12 @@
 from pathlib import Path
 
+from decouple import config
+
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
-SECRET_KEY = '0(fjeul_em714k)e*(8vt=e+qg-hdv5f^j^k&z%s*!l(u=9ic-'
+SECRET_KEY = config('SECRET_KEY')
 
-DEBUG = True
+DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -51,7 +53,7 @@ WSGI_APPLICATION = 'postelka.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / config('DB_NAME'),
     }
 }
 
