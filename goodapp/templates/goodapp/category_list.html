@@ -1,0 +1,144 @@
+{% extends 'baseapp/index.html' %}
+
+{% load static %}
+
+{% block title %} Постелька - Интернет магазин - Категории {% endblock %}
+
+{% block description %} {{ block.super }} {% endblock %}
+
+{% block content %}
+
+<div class="breadcrumb-area gray-bg">
+	<div class="container">
+		<div class="breadcrumb-content">
+			<ul>
+				<li><a href="{% url 'show_index' %}">Home</a></li>
+				<li class="active">Каталог</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="shop-page-area pt-75 pb-75">
+	<div class="container">
+		<div class="row flex-row-reverse">
+			<div class="col-lg-9">
+				<div class="grid-list-product-wrapper">
+					<div class="product-grid product-view pb-20">
+						<div class="row">
+
+							{% for category in categories %}
+							<div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
+								<div class="product-wrapper">
+									<div class="product-img">
+										<a href="{% url 'show_category' cpu_slug=category.cpu_slug %}">
+											<img alt="" src="{% static 'img/product/product-1.jpg' %}">
+										</a>
+									</div>
+									<div class="product-content text-center">
+										<h4>
+											<a href="{% url 'show_category' cpu_slug=category.cpu_slug %}">{{ category.name }}</a>
+										</h4>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="shop-sidebar-wrapper gray-bg-7 shop-sidebar-mrg">
+					<div class="shop-widget">
+						<h4 class="shop-sidebar-title">Категории</h4>
+						<div class="shop-catigory">
+							<ul id="faq">
+								{% for category in categories %}
+								<li><a href="{% url 'show_category' cpu_slug=category.cpu_slug %}">{{ category.name }}</a></li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+					<div class="shop-widget mt-40 shop-sidebar-border pt-35 ">
+						<h4 class="shop-sidebar-title">Размеры</h4>
+						<div class="shop-catigory">
+							<ul id="faq">
+								<li> <a href="{% url 'show_size' razmer_kpb='1.5 спальный' %}">1.5 спальный</a></li>
+								<li> <a href="{% url 'show_size' razmer_kpb='2 спальный' %}">2 спальный</a></li>
+								<li> <a href="{% url 'show_size' razmer_kpb='Евро' %}">Евро</a></li>
+								<li> <a href="{% url 'show_size' razmer_kpb='Дуэт Семейный' %}">Дуэт Семейный</a></li>
+								<li> <a href="{% url 'show_size' razmer_kpb='Евро Макси' %}">Евро Макси</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="shop-price-filter mt-40 shop-sidebar-border pt-35">
+						<h4 class="shop-sidebar-title">Price Filter</h4>
+						<div class="price_filter mt-25">
+							<span>Range:  $100.00 - 1.300.00 </span>
+							<div id="slider-range"></div>
+							<div class="price_slider_amount">
+								<div class="label-input">
+									<input type="text" id="amount" name="price"  placeholder="Add Your Price" />
+								</div>
+								<button type="button">Filter</button> 
+							</div>
+						</div>
+					</div>
+					<div class="shop-widget mt-40 shop-sidebar-border pt-35">
+						<h4 class="shop-sidebar-title">By Brand</h4>
+						<div class="sidebar-list-style mt-20">
+							<ul>
+								<li><input type="checkbox"><a href="#">Poure </a></li>
+								<li><input type="checkbox"><a href="#">Eveman </a></li>
+								<li><input type="checkbox"><a href="#">Iccaso </a></li>
+								<li><input type="checkbox"><a href="#">Annopil </a></li>
+								<li><input type="checkbox"><a href="#">Origina </a></li>
+								<li><input type="checkbox"><a href="#">Perini  </a></li>
+								<li><input type="checkbox"><a href="#">Dolloz </a></li>
+								<li><input type="checkbox"><a href="#">Spectry </a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="shop-widget mt-40 shop-sidebar-border pt-35">
+						<h4 class="shop-sidebar-title">By Color</h4>
+						<div class="sidebar-list-style mt-20">
+							<ul>
+								<li><input type="checkbox"><a href="#">Black </a></li>
+								<li><input type="checkbox"><a href="#">Blue </a></li>
+								<li><input type="checkbox"><a href="#">Green </a></li>
+								<li><input type="checkbox"><a href="#">Grey </a></li>
+								<li><input type="checkbox"><a href="#">Red</a></li>
+								<li><input type="checkbox"><a href="#">White  </a></li>
+								<li><input type="checkbox"><a href="#">Yellow   </a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="shop-widget mt-40 shop-sidebar-border pt-35">
+						<h4 class="shop-sidebar-title">Compare Products</h4>
+						<div class="compare-product">
+							<p>You have no item to compare. </p>
+							<div class="compare-product-btn">
+								<span>Clear all </span>
+								<a href="#">Compare <i class="fa fa-check"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="shop-widget mt-40 shop-sidebar-border pt-35">
+						<h4 class="shop-sidebar-title">Popular Tags</h4>
+						<div class="shop-tags mt-25">
+							<ul>
+								<li><a href="#">Bouquet</a></li>
+								<li><a href="#">Event</a></li>
+								<li><a href="#">Gift</a></li>
+								<li><a href="#">Joy</a></li>
+								<li><a href="#">Love </a></li>
+								<li><a href="#">Special</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}}
